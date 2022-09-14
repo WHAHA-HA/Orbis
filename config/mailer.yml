@@ -1,0 +1,36 @@
+# ActionMailer Configuration
+common: &default_settings
+  default_url_options:
+    host: 'localhost'
+    port: 3000
+  delivery_method: :smtp
+  raise_delivery_errors: true
+  default_options:
+    from: 'info@orbis.com'
+    to: ['sokomheng89@gmail.com' ]
+
+development:
+  <<: *default_settings
+  smtp_settings:
+    address: 'smtp.gmail.com'
+    port: 587
+    authentication: 'plain'
+    enable_starttls_auto: true
+  default_options:
+    from: 'info@orbis.com'
+    to: ['sokomheng89@gmail.com']
+production:
+  <<: *default_settings
+  default_url_options:
+    host: 'www.orbisdigital.com'
+    port: 80
+  raise_delivery_errors: false
+  smtp_settings:
+    address: 'smtp.gmail.com'
+    port: 587
+    authentication: plain
+    user_name: 'orbisemail@gmail.com'
+    password: 'Orbis123'
+  default_options:
+    from: 'info@orbis.com'
+    to: ['sokomheng89@gmail.com']

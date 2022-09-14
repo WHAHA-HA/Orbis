@@ -1,0 +1,29 @@
+#preloader
+  .spinner
+.stickem-container
+  .wrap-container20-rs#contact
+    .container
+      .post-heading-center.margin-bottom30.animation.header-big.animated.animation-fade-in-down data-animation="animation-fade-in-down"
+        h2 Welcome to Orbis.
+      .post-heading-center.animation data-animation="animation-fade-in-down"
+        h3 Welcome back.
+      .row
+        .col-md-4.col-sm-4.col-md-offset-4.col-sm-offset-4
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                          html: {class: 'login-form animation animated animation-fade-in-up'}) do |f|
+            = content_tag(:div, flash[:alert], class: 'alert alert-danger') if flash[:alert]
+            = content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice]
+            = content_tag(:div, flash[:error], class: 'alert alert-danger') if flash[:error]
+            = f.error_notification
+            .form-group
+              = f.text_field :email, required: true, autofocus: true, class: 'form-control black'
+            .form-group
+              = f.password_field :password, required: true, class: 'form-control black'
+            .form-group
+              = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+            .form-actions.form-group
+              = f.button :submit, "Log in"
+            br
+            = render "devise/shared/links"
+            br
+= render 'layouts/footer'

@@ -1,0 +1,22 @@
+= render(layout: 'accounts/layout') do
+  - @posts.each do |post|
+    #my-feed.tab-pane.active
+      ul.feed-list
+        li
+          .row
+            .col-md-9.col-sm-9
+              .feed-content
+                = post.content
+              .feed-social
+                - if post.twitter
+                  a.twitter[href="#"]
+                    i.ion.ion-social-twitter
+                - if post.facebook
+                  a.facebook[href="#"]
+                    i.ion.ion-social-facebook
+                - if post.linkedin
+                  a.linkedin[href="#"]
+                    i.ion.ion-social-linkedin
+            .col-md-3.col-sm-3
+              .feed-date
+                = post.created_at.to_s(:long)

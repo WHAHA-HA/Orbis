@@ -1,0 +1,27 @@
+nav#navigation.navbar.navbar-default.navbar-no-logo-xs.stickem.scrollspy
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#menu-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Menu
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      .navbar-brand
+        = image_tag("logo.png")
+    /! site logo
+    #menu-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a.smooth-scroll href="/#header"  Home
+        - if user_signed_in?
+          li
+            = link_to 'Get Started', edit_category_users_path, class: 'smooth-scroll'
+          li class="#{page_class_active('accounts')}"
+            = link_to 'Account', posts_path, class: 'smooth-scroll'
+          li
+            = link_to 'Logout', destroy_user_session_path, class: 'smooth-scroll', method: :delete
+        - else
+          li
+            a.smooth-scroll href="#pricing"  Pricing
+          li.menu-btn
+            = link_to 'Get Started!', new_user_session_path, class: 'smooth-scroll'

@@ -1,0 +1,29 @@
+= render 'admin/navbar'
+#page-wrapper.gray-bg
+  = render 'admin/topbar'
+  = render :partial => 'header', :locals => {:mode => 'index'}
+
+  .row
+    .wrapper.wrapper-content.animated.fadeInRight
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Manage Users
+        .ibox-content
+          table.table
+            thead
+              tr
+                th Username
+                th Email
+                th Added Date
+                th Action
+            tbody
+              - @users.each do |user|
+                tr
+                  td= user.username
+                  td= user.email
+                  td= user.created_at.to_date
+                  td
+                    = link_to admin_account_path(user), method: :delete, :class => 'btn btn-xs btn-danger',
+                      data: {confirm: 'Are you sure?'} do
+                      i.fa.fa-trash-o
+                      |  Delete

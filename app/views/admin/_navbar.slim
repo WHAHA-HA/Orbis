@@ -1,0 +1,28 @@
+nav.navbar-default.navbar-static-side role="navigation" 
+  .sidebar-collapse
+    ul#side-menu.nav
+      li.nav-header
+        .dropdown.profile-element
+          span
+            = image_tag 'admin/missing.png', :class => 'img-circle'
+          a.dropdown-toggle data-toggle="dropdown" href="#" 
+            span.clear
+              span.block.m-t-xs
+                strong.font-bold= current_admin.username
+          ul.dropdown-menu.animated.fadeInRight.m-t-xs
+            li
+              a href="#"   Logout
+        .logo-element
+          | | IN+
+      li class="#{page_class_active 'admin/accounts'}"
+        = link_to admin_accounts_path do
+          i.fa.fa-user
+          span.nav-label Users
+      li class="#{page_class_active 'admin/posts'}"
+        = link_to admin_posts_path do
+          i.fa.fa-comments-o
+          span.nav-label Posts
+      li class="#{page_class_active 'admin/categories'}"
+        = link_to admin_categories_path do
+          i.fa.fa-quote-right
+          span.nav-label Other Categories

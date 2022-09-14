@@ -1,0 +1,51 @@
+= render 'admin/navbar'
+#page-wrapper.gray-bg
+  = render 'admin/topbar'
+  = render :partial => 'header', :locals => {:mode => 'index'}
+  .row.m-t-lg
+    = link_to new_admin_post_path, :class => 'btn btn-sm btn-info pull-right m-r-sm' do
+      i.fa.fa-plus
+      |  New Post
+    = link_to admin_new_schedule_path, :class => 'btn btn-sm btn-info pull-right m-r-sm' do
+      i.fa.fa-tachometer
+      |  Schedule Post
+
+  .row
+    .wrapper.wrapper-content.animated.fadeInRight
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Manage Posts
+        .ibox-content
+          table.table
+            thead
+              tr
+                th Content
+                th
+                  i.fa.fa-facebook
+                th
+                  i.fa.fa-twitter
+                th
+                  i.fa.fa-linkedin
+                th Schedule At
+                th Added Date
+                th Action
+            tbody
+              - @posts.each do |post|
+                tr
+                  td= truncate(post.content, length: 35)
+                  td
+                    - if post.facebook
+                      i.fa.fa-check-circle.text-navy
+                  td
+                    - if post.twitter
+                      i.fa.fa-check-circle.text-navy
+                  td
+                    - if post.linkedin
+                      i.fa.fa-check-circle.text-navy
+                  td= post.schedule_at.blank? ? 'No - Schedule Post' : post.schedule_at.to_s(:long)
+                  td= post.created_at.to_date
+                  td
+                    = link_to admin_post_path(post), method: :delete, :class => 'btn btn-xs btn-danger',
+                      data: {confirm: 'Are you sure?'} do
+                      i.fa.fa-trash-o
+                      |  Delete

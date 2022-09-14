@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @admin],
+  wrapper: :vertical_form,
+  wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+  = f.error_notification
+  = f.input :email, required: true
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :password, required: true
+  = f.input :password_confirmation, required: true
+
+  .hr-line-dashed
+  .form-group
+    = button_tag(type: 'submit', class: "btn btn-primary") do
+      %i.fa.fa-check-circle
+      Save  Update

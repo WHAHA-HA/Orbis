@@ -1,0 +1,31 @@
+= render 'admin/navbar'
+#page-wrapper.gray-bg
+  = render 'admin/topbar'
+  = render :partial => 'header', :locals => {:mode => 'index'}
+
+  .row
+    .wrapper.wrapper-content.animated.fadeInRight
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Manage Request Categories
+        .ibox-content
+          table.table
+            thead
+              tr
+                th Category Type
+                th Category Name
+                th Requested By
+                th Added Date
+                th Action
+            tbody
+              - OtherCategory.order(created_at: :desc).each do |category|
+                tr
+                  td= category.category_type.titleize
+                  td= category.category_name
+                  td= category.user.username
+                  td= category.created_at.to_date
+                  td
+                    = link_to admin_category_path(category), method: :delete, :class => 'btn btn-xs btn-danger',
+                      data: {confirm: 'Are you sure?'} do
+                      i.fa.fa-trash-o
+                      |  Delete

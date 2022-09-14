@@ -1,0 +1,21 @@
+#preloader
+  .spinner
+.stickem-container
+  .wrap-container20-rs#contact
+    .container
+      .post-heading-center.margin-bottom30.animation.header-big.animated.animation-fade-in-down data-animation="animation-fade-in-down"
+        h2 Welcome to Orbis
+      .post-heading-center.animation data-animation="animation-fade-in-down"
+        h5 Create Your Account
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
+        html: {class: 'affa-form-contact animation animated animation-fade-in-up'}) do |f|
+
+        = f.error_notification
+        = f.input :username, required: true, autofocus: true
+        = f.input :email, required: true
+        = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+        = f.input :password_confirmation, required: true
+        .form-actions.margin-bottom20
+          = f.button :submit, "Create Account"
+        = render "devise/shared/links"
+= render 'layouts/footer'

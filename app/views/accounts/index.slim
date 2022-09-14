@@ -1,0 +1,140 @@
+= render(layout: 'layout') do
+  #my-account.tab-pane.active
+    ul.choose-social.row
+      - if current_user.user_facebook_profile.present?
+        li.col-md-4.col-sm-4 data-avatar-index=1 class="#{avatar_active_class 'facebook'}"
+          .block-avatar
+            = image_tag current_user.user_facebook_profile.image, class: 'img-responsive profile-image'
+          h3.social-name
+            | Facebook
+      - if current_user.user_twitter_profile.present?
+        li.col-md-4.col-sm-4 data-avatar-index=2 class="#{avatar_active_class 'twitter'}"
+          .block-avatar
+            = image_tag current_user.user_twitter_profile.image, class: 'img-responsive profile-image'
+          h3.social-name
+            | Twitter
+      - if current_user.user_linkedin_profile.present?
+        li.col-md-4.col-sm-4 data-avatar-index=3 class="#{avatar_active_class 'linkedin'}"
+          .block-avatar
+            = image_tag current_user.user_linkedin_profile.image, class: 'img-responsive profile-image'
+          h3.social-name
+            | Linkedin
+
+    .social-login.margin-bottom50
+      - unless current_user.user_facebook_profile.present?
+        = link_to content_tag('span', '', class: 'fa fa-facebook') + ' Sign in with Facebook',
+                  user_omniauth_authorize_path(:facebook), class: 'btn btn-block btn-social btn-facebook margin-bottom30'
+      - unless current_user.user_twitter_profile.present?
+        = link_to content_tag('i', '', class: 'fa fa-twitter') + ' Sign in with Twitter',
+                  user_omniauth_authorize_path(:twitter), class: 'btn btn-block btn-social btn-twitter margin-bottom30'
+      - unless current_user.user_linkedin_profile.present?
+        = link_to content_tag('i', '', class: 'fa fa-linkedin') + ' Sign in with LinkedIn',
+                  user_omniauth_authorize_path(:linkedin), class: 'btn btn-block btn-social btn-linkedin'
+
+    .change-password
+
+      h4.title
+        | Change My Password
+      = simple_form_for current_user, wrapper: :vertical_form, method: :put,
+        url: update_setting_path do |f|
+        .row
+          .col-md-8
+            = f.input :current_password, label: 'Current Password'
+        .row
+          .col-md-8
+            = f.input :password, label: 'New Password'
+        .row
+          .col-md-8
+            = f.input :password_confirmation, label: 'Confirm New Password'
+        = f.input :default_avatar, as: :hidden
+        = submit_tag 'Update Password'
+    ul.list-comment
+      li
+        .row
+          .col-md-9.col-sm-9
+            h4.title
+              | Licenses
+            .description
+              | Life Insurance, Health Insurance, Real Estate
+            .user-category
+              - @user_licenses.each_with_index do |license, index|
+                label= license.license_category.name
+                - if index < @user_licenses.length - 1
+                  label.margin-right10 ,
+          .col-md-3.col-sm-3
+            = link_to 'Add/Remove', edit_category_users_path, class: 'btn-custom small'
+      li
+        .row
+          .col-md-9.col-sm-9
+            h4.title
+              | Products
+            .description
+              | Life Insurance, Living Benefits Term, Whole Life, Universal/IUL, Medicare Supplement, Indexed Annuities
+            .user-category
+              - @user_products.each_with_index do |product, index|
+                label= product.product_category.name
+                - if index < @user_products.length - 1
+                  label.margin-right10 ,
+          .col-md-3.col-sm-3
+            = link_to 'Add/Remove', edit_category_users_path, class: 'btn-custom small'
+      li
+        .row
+          .col-md-9.col-sm-9
+            h4.title
+              | Carriers
+            .description
+              | AXA, Baltimore Life, Phoenix, Transamerica, Voya
+            .user-category
+              - @user_carriers.each_with_index do |carrier, index|
+                label= carrier.carrier_category.name
+                - if index < @user_carriers.length - 1
+                  label.margin-right10 ,
+          .col-md-3.col-sm-3
+            = link_to 'Add/Remove', edit_category_users_path, class: 'btn-custom small'
+      li
+        .row
+          .col-md-9.col-sm-9
+            h4.title
+              | News
+            .description
+              | CNN Money, TIME, Motley Fool, Bloomberg Business, Fox Business, Wall Street Journal, New York Times
+            .user-category
+              - @user_news.each_with_index do |news, index|
+                label= news.news_category.name
+                - if index < @user_news.length - 1
+                  label.margin-right10 ,
+          .col-md-3.col-sm-3
+            = link_to 'Add/Remove', edit_category_users_path, class: 'btn-custom small'
+      li
+        p
+          i Placeholder for Stripe Content
+        p
+          | Need help? Email support at
+          strong
+            = mail_to "support@orbisdigital.com"
+      /li
+      /  .row
+      /    .col-md-9.col-sm-9
+      /      h4.title
+      /        | Schedule
+      /      .description
+      /        | Facebook: Every Couple Weeks
+      /        br
+      /        | Twitter: Couple Times a Week
+      /        br
+      /        | LinkedIn: Once a Week
+      /    .col-md-3.col-sm-3
+      /      a.small.btn-custom[href="#"]
+      /        | Add/Remove
+
+#popup-login.mfp-hide.white-popup-block
+  h3.margin-bottom50 Connect Your Accounts
+  - unless current_user.user_facebook_profile.present?
+    = link_to content_tag('span', '', class: 'fa fa-facebook') + ' Sign in with Facebook',
+              user_omniauth_authorize_path(:facebook), class: 'btn btn-block btn-social btn-facebook margin-bottom30'
+  - unless current_user.user_twitter_profile.present?
+    = link_to content_tag('i', '', class: 'fa fa-twitter') + ' Sign in with Twitter',
+              user_omniauth_authorize_path(:twitter), class: 'btn btn-block btn-social btn-twitter margin-bottom30'
+  - unless current_user.user_linkedin_profile.present?
+    = link_to content_tag('i', '', class: 'fa fa-linkedin') + ' Sign in with LinkedIn',
+              user_omniauth_authorize_path(:linkedin), class: 'btn btn-block btn-social btn-linkedin'

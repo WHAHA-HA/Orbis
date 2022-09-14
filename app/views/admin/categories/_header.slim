@@ -1,0 +1,16 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2 Manage Requested Categories
+    ol.breadcrumb
+      li
+        a href="#"   Home
+      li class=((mode == 'index' ? 'active' : '')) 
+        = link_to 'Category', admin_categories_path
+      - if mode != 'index'
+        li.active
+          strong= mode
+.result-notice
+
+- if flash[:notice]
+  .alert.alert-info.custom-alert-margin.m-t-md
+    = flash[:notice]

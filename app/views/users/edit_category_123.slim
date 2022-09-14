@@ -1,0 +1,38 @@
+= render(layout: 'get_started_layout') do
+  #home.tab-pane.active.row[role="tabpanel"]
+    = simple_form_for(@form, url: update_category_users_path,
+                      html: {class: 'text-left animation animated animation-fade-in-up col-md-8'}) do |f|
+      = f.error_notification
+      /= f.simple_fields_for :user_carrier_categories do |c|
+      /  /= c.association :carrier_category, :as => :select
+      /  = c.input :carrier_category_id, collection: CarrierCategory.pluck(:name, :id),
+      /    as: :select, input_html: { multiple: true}
+      label Carrier Category
+      = select_tag("carrier_category_ids[]",
+                   options_for_select(CarrierCategory.all.collect { |c| [c.name, c.id] },
+                                      @form.carrier_categories.collect { |c| c.id }),
+                   {:multiple => true, :size => 6, class: 'form-control chosen-select',
+                    'data-placeholder': "Choose Carrier Categories..."})
+
+      label License Category
+      = select_tag("license_category_ids[]",
+                   options_for_select(LicenseCategory.all.collect { |c| [c.name, c.id] },
+                                      @form.license_categories.collect { |c| c.id }),
+                   {:multiple => true, :size => 6, class: 'form-control chosen-select',
+                    'data-placeholder': "Choose License Categories..."})
+
+      label Product Category
+      = select_tag("product_category_ids[]",
+                   options_for_select(ProductCategory.all.collect { |c| [c.name, c.id] },
+                                      @form.product_categories.collect { |c| c.id }),
+                   {:multiple => true, :size => 6, class: 'form-control chosen-select',
+                    'data-placeholder': "Choose Product Categories..."})
+
+      label News Category
+      = select_tag("news_category_ids[]",
+                   options_for_select(NewsCategory.all.collect { |c| [c.name, c.id] },
+                                      @form.news_categories.collect { |c| c.id }),
+                   {:multiple => true, :size => 6, class: 'form-control chosen-select',
+                    'data-placeholder': "Choose News Categories..."})
+
+      = f.submit 'Submit'

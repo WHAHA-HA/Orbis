@@ -1,0 +1,260 @@
+#preloader
+  .spinner
+header#header
+  .header-overlay
+    .container
+      .row
+        .col-sm-5.col-md-4.col-md-offset-1
+          figure.header-img.animation[data-animation="animation-fade-in-left"]
+            = image_tag 'header-img.png', alt: 'Header Image'
+        .col-sm-7.col-md-5.col-md-offset-1
+          .header-text.animation[data-animation="animation-fade-in-right"]
+            h1.header-heading
+              | Hi #{current_user.username}.
+              br
+              |  Welcome to Orbis.
+            .header-content
+              p
+                | You’re five minutes from your automated social engine. But first, help us get to know you.
+.stickem-container
+  = render 'layouts/nav'
+  #features.padding-top60
+    .container.margin-bottom-50
+      = content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice]
+      .post-heading-center.margin-bottom50.animation[data-animation="animation-fade-in-down"]
+        h2
+          |  What
+          strong  Licenses
+          |  do you hold?
+      .row.category-section#license_category
+        .col-sm-3.col-md-3.col-md-offset-3.col-sm-offset-3.animation[data-animation="animation-fade-in-left"]
+          - LicenseCategory.limit(4).collect do |license|
+            - result = user_category_id(license, 'license')
+            p.margin-bottom-30.text-center
+              a.btn-custom.white class="#{result[0]}" data-id="#{license.id}" data-uc-id="#{result[1]}"
+                span= license.name
+        .col-sm-3.col-md-3.animation[data-animation="animation-fade-in-right"]
+          - LicenseCategory.limit(4).offset(4).collect do |license|
+            - result = user_category_id(license, 'license')
+            p.margin-bottom-30.text-center
+              a.btn-custom.white class="#{result[0]}" data-id="#{license.id}" data-uc-id="#{result[1]}"
+                span= license.name
+      .row
+        /  .col-sm-3.col-md-3.col-md-offset-3.col-sm-offset-3.animation[data-animation="animation-fade-in-left"]
+        /    p.margin-bottom-30.text-center
+        /      a.btn-custom.white[href="#"]
+        /        span
+        /          | Other
+        .col-sm-3.col-md-3.col-md-offset-3.col-sm-offset-3.animation[data-animation="animation-fade-in-right"]
+          p.margin-bottom-30.text-center
+            input.black#other_license[type="text" placeholder="Other Licenses (Separate by commas)"]
+    .wrap-container80-rs.bg-grey
+      .container
+        .row
+          .col-md-5.animation[data-animation="animation-fade-in-left"]
+            .post-heading-left
+              h2
+                | Cool.
+                br
+                |  What
+                strong
+                  |  Products
+                |  do you sell?
+            p
+              | Orbis tailors content specific to the products you sell. After all, it only makes sense to market the stuff you sell, right?
+          .col-md-7.animation[data-animation="animation-fade-in-right"]
+            .row.category-section#product_category
+              .col-md-4.col-sm-4
+                - ProductCategory.limit(5).collect do |product|
+                  - result = user_category_id(product, 'product')
+                  p.margin-bottom-30.text-center
+                    a.btn-custom.white class="#{result[0]}" data-id="#{product.id}" data-uc-id="#{result[1]}"
+                      span= product.name
+              .col-md-4.col-sm-4
+                - ProductCategory.limit(5).offset(5).collect do |product|
+                  - result = user_category_id(product, 'product')
+                  p.margin-bottom-30.text-center
+                    a.btn-custom.white class="#{result[0]}" data-id="#{product.id}" data-uc-id="#{result[1]}"
+                      span= product.name
+              .col-md-4.col-sm-4
+                - ProductCategory.limit(5).offset(10).collect do |product|
+                  - result = user_category_id(product, 'product')
+                  p.margin-bottom-30.text-center
+                    a.btn-custom.white class="#{result[0]}" data-id="#{product.id}" data-uc-id="#{result[1]}"
+                      span= product.name
+            .row
+              /  .col-md-4.col-sm-4
+              /    p.margin-bottom-30.text-center
+              /      a.btn-custom.white[href="#"]
+              /        span
+              /          | Other
+              .col-md-8.col-sm-8
+                input.black.form-control#other_product[type="text" placeholder="Other Products (Separate by commas)"]
+    .wrap-container40-rs
+      .container
+        .post-heading-center.margin-bottom30.animation[data-animation="animation-fade-in-down"]
+          h2
+            | Great.
+            br
+            |  What
+            strong
+              |  Carriers
+            |  do you represent?
+        .row.margin-bottom-40.category-section#carrier_category
+          - CarrierCategory.all.collect do |carrier|
+            - result = user_category_id(carrier, 'carrier')
+            .col-md-3.col-sm-3.animation[data-animation="animation-fade-in-left"]
+              p.margin-bottom-20.text-center
+                a.btn-custom.white class="#{result[0]}" data-id="#{carrier.id}" data-uc-id="#{result[1]}"
+                  span= carrier.name
+        .row
+          /  .col-md-3.col-sm-4.animation[data-animation="animation-fade-in-left"]
+          /    p.margin-bottom-20.text-center
+          /      a.btn-custom.white[href="#"]
+          /        span
+          /          | Other
+          .col-md-4.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            input.black.form-control#other_carrier[type="text" placeholder="Other Carriers (Separated by commas)"]
+    .wrap-container40-rs.bg-grey
+      .container
+        .post-heading-center.margin-bottom70.animation[data-animation="animation-fade-in-down"]
+          h2
+            | What kind of
+            strong
+              |  news
+            |  do you typically read?
+          p
+            | Orbis wants to give your voice to your clients. The type of news you typically read gives Orbis an idea of the tone you like to share.
+        .row.category-section#news_category
+          .col-md-2.col-sm-4.col-md-offset-3.animation[data-animation="animation-fade-in-left"]
+            - NewsCategory.limit(4).collect do |news|
+              - result = user_category_id(news, 'news')
+              p.margin-bottom-30.text-center
+                a.btn-custom.white class="#{result[0]}" data-id="#{news.id}" data-uc-id="#{result[1]}"
+                  span= news.name
+          .col-md-2.col-sm-4.animation[data-animation="animation-fade-in-up"]
+            - NewsCategory.limit(4).offset(4).collect do |news|
+              - result = user_category_id(news, 'news')
+              p.margin-bottom-30.text-center
+                a.btn-custom.white class="#{result[0]}" data-id="#{news.id}" data-uc-id="#{result[1]}"
+                  span= news.name
+          .col-md-2.col-sm-4.animation[data-animation="animation-fade-in-right"]
+            - NewsCategory.limit(4).offset(8).collect do |news|
+              - result = user_category_id(news, 'news')
+              p.margin-bottom-30.text-center
+                a.btn-custom.white class="#{result[0]}" data-id="#{news.id}" data-uc-id="#{result[1]}"
+                  span= news.name
+        .row
+          /  .col-md-2.col-sm-4.col-md-offset-3.animation[data-animation="animation-fade-in-left"]
+          /    p.margin-bottom-30.text-center
+          /      a.btn-custom.white[href="#"]
+          /        span
+          /          | Other
+          .col-md-4.col-sm-8.col-md-offset-3.animation[data-animation="animation-fade-in-right"]
+            input.black.form-control#other_news[type="text" placeholder="Other News (Separate by commas)"]
+    .wrap-container40-rs
+      .container
+        .post-heading-center.margin-bottom70.animation[data-animation="animation-fade-in-down"]
+          h2
+            | Perfect. Let’s
+            strong
+              | schedule
+            |  your posts.
+          p
+            | This part is important. Orbis follows industry guidelines on the best time to post, but these are your
+            br
+            |  accounts. Let us know how often you want your Orbis posts to apper.
+            br
+            i
+              | *We put a star next to our recommended scheduling.
+        p.text-center.animation[data-animation="animation-fade-in-up"]
+          i.ion.ion-social-facebook.icon-big
+        .row.margin-bottom-20
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Every Couple of Weeks*
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Once a Week
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Couple Times Per Week
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | 3 - 4 Times Per Week
+        p.text-center.animation[data-animation="animation-fade-in-up"]
+          i.ion.ion-social-twitter.icon-big
+        .row.margin-bottom-20
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Every Other Week
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Once a Week
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | A Few Times Per Week*
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | 5+ Times Per Week
+        p.text-center.animation[data-animation="animation-fade-in-up"]
+          i.ion.ion-social-linkedin.icon-big
+        .row.margin-bottom-20
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Every Couple of Weeks
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-left"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Once a Week
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | Couple Times Per Week*
+          .col-md-3.col-sm-6.animation[data-animation="animation-fade-in-right"]
+            p.margin-bottom-30.text-center
+              a.btn-custom.white[href="#"]
+                span
+                  | 3 - 4 Times Per Week
+
+    #contact.wrap-container80-rs.bg-grey
+      .container
+        .post-heading-center.animation[data-animation="animation-fade-in-down"]
+          h2
+            | Great! Almost done.
+          p Is there anything else you want us to know?
+          br
+          .row
+            .col-md-6.col-md-offset-3
+              textarea.form-control#your_message[rows="5" placeholder="Your message"]
+          a.btn-custom.margin-bottom30.margin-top30-rs.inline-block#lets_go[href="#"] Let’s Go!
+          p.text-center
+            | By clicking “Let’s Go!” you agree to accept our
+            a[href="terms-and-conditions.html"]
+              strong
+                |  Terms & Conditions
+            |  and
+            a[href="#"]
+              strong
+                |  Privacy Policy
+= render 'layouts/footer'

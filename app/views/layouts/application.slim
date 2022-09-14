@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    title Orbis
+    = stylesheet_link_tag "application", params[:controller], :media => "all",
+                          "data-tubolinks-track" => true
+    = javascript_include_tag "application", params[:controller], 'data-turbolinks-track' => true
+    = csrf_meta_tag
+  body.bg-grey
+    = yield

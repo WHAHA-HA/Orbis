@@ -1,0 +1,37 @@
+= render(layout: 'get_started_layout') do
+  - unless current_user.user_facebook_profile.present?
+    = link_to content_tag('i', '', class: 'fa fa-facebook') + ' Connect to Facebook',
+              user_omniauth_authorize_path(:facebook), class: 'btn btn-default margin-right10'
+  - unless current_user.user_twitter_profile.present?
+    = link_to content_tag('i', '', class: 'fa fa-twitter') + ' Connect to Twitter',
+              user_omniauth_authorize_path(:twitter), class: 'btn btn-default margin-right10'
+  - unless current_user.user_linkedin_profile.present?
+    = link_to content_tag('i', '', class: 'fa fa-linkedin') + ' Connect to Linkedin',
+              user_omniauth_authorize_path(:linkedin), class: 'btn btn-default'
+  .row
+    - if current_user.user_facebook_profile.present?
+      .col-md-2.facebook-profile.profile.no-border
+        h4 Facebook Profile
+        .img-wrap
+          img.profile-image.img-responsive.img-overlay src="#{current_user.user_facebook_profile.image}"
+        p.margin-bottom5
+          strong= current_user.user_facebook_profile.name
+        p= current_user.user_facebook_profile.email
+    - if current_user.user_twitter_profile.present?
+      .col-md-2.twitter-profile.profile.no-border
+        h4 Twitter Profile
+        .img-wrap
+          img.profile-image.img-responsive.img-overlay src="#{current_user.user_twitter_profile.image}"
+        p.margin-bottom5
+          strong= current_user.user_twitter_profile.name
+    - if current_user.user_linkedin_profile.present?
+      .col-md-2.twitter-profile.profile.no-border
+        h4 Linkedin Profile
+        .img-wrap
+          - if current_user.user_linkedin_profile.image == nil
+            = image_tag 'admin/missing.png', class: 'profile-image img-responsive img-overlay'
+          - else
+            img.profile-image.img-responsive.img-overlay src="#{current_user.user_linkedin_profile.image}"
+        p.margin-bottom5
+          strong= current_user.user_linkedin_profile.name
+        p= current_user.user_linkedin_profile.email

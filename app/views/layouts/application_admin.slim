@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title Orbis Admin
+    = stylesheet_link_tag "application_admin", params[:controller], :media => "all", 'data-turbolinks-track' => true
+    = javascript_include_tag "application_admin", params[:controller], 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    - if defined?(@is_login_page).nil?
+      - bodyClass = '' else bodyClass = 'gray-bg'
+  body class=bodyClass
+    = yield

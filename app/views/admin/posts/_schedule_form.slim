@@ -1,0 +1,22 @@
+= simple_form_for [:admin, @post], url: admin_create_schedule_path,
+  wrapper: :vertical_form do |f|
+  = f.error_notification
+  .row
+    .col-md-6
+      = f.input :content, input_html: { maxlength: 144}, id: 'content_field'
+    .col-md-6
+      = f.input :schedule_at
+  span#content_count 144 characters
+  = f.input :carrier_category_id, collection: CarrierCategory.pluck(:name, :id), as: :select
+  = f.input :license_category_id, collection: LicenseCategory.pluck(:name, :id), as: :select
+  = f.input :product_category_id, collection: ProductCategory.pluck(:name, :id), as: :select
+  = f.input :news_category_id, collection: NewsCategory.pluck(:name, :id), as: :select
+  /= select_tag 'user_id', options_for_select(UserFacebookProfile.all.collect{ |u| [u.name, u.id] }), multiple: true, class: 'form-control'
+  = f.input :facebook
+  = f.input :twitter
+  = f.input :linkedin
+  .hr-line-dashed
+  .form-group
+    = button_tag(type: 'submit', class: "btn btn-primary") do
+      i.fa.fa-check-circle
+      |  Post

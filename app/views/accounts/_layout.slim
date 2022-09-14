@@ -1,0 +1,33 @@
+#preloader
+  .spinner
+.stickem-container
+  = render 'layouts/nav'
+  .bg-white.wrap-container30-rs.margin-top-30.margin-bottom-30
+    .container
+      h3.tp-title
+        | Your Account
+  .container.margin-bottom-50
+    = content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice]
+    .row
+      .col-md-4.col-sm-4
+        .profile.animation[data-animation="animation-fade-in-left"]
+          h4.profile-title
+            | My Profile
+          .profile-avatar
+            img src="#{get_default_avatar}"
+          h4.profile-name
+            = current_user.username
+          .profile-desc
+            a[href="mailto:JohnAgent@agentmail.com"]
+              = current_user.email
+      .col-md-8.col-sm-8
+        .tab-profile.animation[data-animation="animation-fade-in-right"]
+          ul.nav.nav-tabs
+            li class="#{page_class_active('posts')}"
+              = link_to 'My Feed', posts_path
+            li class="#{page_class_active('accounts')}"
+              = link_to 'My Account', accounts_path
+          .tab-content
+            = yield
+
+  = render 'layouts/footer'

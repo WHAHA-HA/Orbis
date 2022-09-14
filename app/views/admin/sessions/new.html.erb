@@ -1,0 +1,29 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+
+      <h1 class="logo-name m-t m-b">Orbis</h1>
+
+    </div>
+    <h3>Welcome to Admin</h3>
+    <p>Login in. To see it in action.</p>
+      <%= content_tag(:div, flash[:error], :class => "alert alert-danger") if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], :class => "alert alert-info") if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], :class => "alert alert-danger") if flash[:alert] %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'm-t login-form'}) do |f| %>
+        <div class="form-group">
+            <%= f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email' %>
+        </div>
+        <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :placeholder => 'Password' %>
+        </div>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.submit "Login", :class => 'btn btn-primary block full-width m-b' %>
+    <% end %>
+    <%= link_to new_admin_password_path do %>
+        <small>Forgot password?</small>
+    <% end %>
+    <p class="m-t"> <small>Admin Section &copy; 2016</small> </p>
+  </div>
+</div>
+

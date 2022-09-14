@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require bootstrap.min
+ *= require font-awesome
+ *= require admin/animate
+ *= require admin/style
+ */
+
+.profile-element img {
+  width: 50px;
+  height: 50px;
+}
+.table {
+  font-size: 13px;
+}
+abbr[title="required"] {
+  color: #ed5565
+}
+.file-upload {
+  position: relative;
+  overflow: hidden;
+}
+.file-upload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.upload-resume-form, .upload-image-form {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.navbar-form-custom {
+  width: 300px !important;
+}
+.navbar-form-custom .form-group {
+  float: left;
+  width: 65%;
+}
+.navbar-form-custom .form-group.submit-wrap {
+  width: 35%;
+}
+.navbar-form-custom .search-submit-button {
+  height: 35px;
+  margin: 12px
+}
+.select2-container .select2-choice {
+  height: 32px !important;
+}
+table.wice-grid tr.wg-filter-row input[type=text] {
+  min-width: 100px;
+  width: 100%;
+}
+.vertical-top {
+  vertical-align: top !important;
+}
+.profile-thumb-mini {
+  width: 30px; height: 30px;
+}
+.inbox .list-group-item.read {
+  background-color: rgba(243,243,243,.85)
+}
+.inbox .list-group-item .last-message {
+  width: 200px;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 30px;
+}
+.nav-tabs.custom li.active a, .nav-tabs.custom li.active a:hover, .nav-tabs.custom li.active a:focus {
+  background-color: #FFFFFF;
+  border-color: #dddddd #dddddd rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.ibox-content.custom {
+  border-width: 1px 1px;
+  border-color: #ddd;
+  border-top: 0;
+  padding-top: 40px;
+}
+.inbox .list-group-item .sent-date {
+  position: relative;
+}
+.inbox .list-group-item .sent-date a {
+  position: absolute;
+  left: -35px;
+  top: 0;
+  display: none;
+}
+.inbox .list-group-item:hover .sent-date a {
+  display: block;
+}

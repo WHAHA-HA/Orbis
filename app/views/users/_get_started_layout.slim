@@ -1,0 +1,18 @@
+#preloader
+  .spinner
+.stickem-container
+  = render 'layouts/nav'
+  .container
+    .post-heading-left
+      h2 Welcome  #{current_user.username}
+  .bg-grey.no-border-bottom.padding-top20-rs.padding-bottom20
+    .container
+      = content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice]
+      ul.nav.nav-tabs
+        li class="#{active_class 'edit_category'}"
+          = link_to 'Categories', edit_category_users_path
+        li class="#{active_class 'edit_account'}"
+          = link_to 'account', edit_account_users_path
+      .tab-content.custom
+        = yield
+  = render 'layouts/footer'

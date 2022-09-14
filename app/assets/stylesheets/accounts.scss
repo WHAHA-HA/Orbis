@@ -1,0 +1,21 @@
+// Place all the styles related to the accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+*= require bootstrap-social
+*= require magnific-popup
+*/
+
+.btn-social{
+  padding:12px;
+  padding-left: 62px;
+  min-width: 215px;
+}
+.btn-social > *:first-child{
+  line-height: 45px;
+  width: 45px;
+}
+
+.social-login{
+  max-width: 400px;
+}

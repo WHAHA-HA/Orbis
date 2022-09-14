@@ -1,0 +1,3 @@
+export ENV=development
+export ORBIS_DATABASE_USERNAME=yakov
+export ORBIS_DATABASE_PASSWORD=yakovdb

@@ -1,0 +1,313 @@
+#preloader
+  .spinner
+header#header
+  .header-overlay
+    .container
+      .row
+        .col-sm-5.col-md-4.col-md-offset-1
+          figure.header-img.animation[data-animation="animation-fade-in-left"]
+            = image_tag 'header-img.png'
+        .col-sm-7.col-md-5.col-md-offset-1
+          .header-text.animation[data-animation="animation-fade-in-right"]
+            .header-logo
+              = image_tag 'logo.png', alt: 'logo'
+            h1.header-heading
+              | Introducing Orbis
+            .header-content
+              p
+                | The social engine for insurance and financial professionals. 
+            .header-button
+              = link_to 'Log In', new_user_session_path, class: 'link'
+              span.header-button-sep
+              = link_to 'Get Started!', new_user_session_path, class: 'btn-custom smooth-scroll'
+.stickem-container
+  = render 'layouts/nav'
+  #features.padding-top60
+    .container
+      = content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice]
+      .post-heading-center.margin-bottom50.animation[data-animation="animation-fade-in-down"]
+        h2
+          | What do your clients find when they 
+          strong
+            | Google
+          |  you?
+        p
+          | Web presence matters. We know that more purchases are intiated and validated online than 
+          br
+          | ever before. 
+          br
+          strong You will be Googled.
+          |  What will your clients find?
+      .row
+        .col-sm-12.col-md-10.col-lg-8.col-md-offset-1.col-lg-offset-2
+          figure.img-overlay.img-center-front
+            = image_tag 'feature-1-center.png', class: 'animation',
+                        alt: 'Image Center', 'data-animation': 'animation-fade-in', 'data-delay': "400"
+  #features2.bg-grey.no-border-bottom.padding-top80-rs
+    .container
+      .row
+        .col-sm-10.col-md-6.col-sm-offset-1.col-md-offset-0
+          .col-text120.margin-bottom20.animation[data-animation="animation-fade-in-left"]
+            .post-heading-left
+              h2
+                | The 
+                strong
+                  | power
+                |  of social.
+              p
+                | More than any other step, a proper 
+                strong
+                  | social strategy
+                |  will help build your online brand. 
+            .post-heading-left.no-devider
+              p
+                | With a 
+                strong
+                  | strong social presence
+                | , you're actively leveraging the most powerful websites in the world. 
+            .post-heading-left.small-text
+              p
+                | When a client searches you online, the most llikely top results will be Twitter and LinkedIn. Will they be impressed when they find you?
+            .post-heading-left.no-devider
+              p
+                | Let the 
+                strong
+                  | big guys
+                |  do the work.
+            p
+              | Keeping up to date with Google's search algorithm, maintaining a website against hackers, staying on top of the latest best practices in social strategy... who has time for that? Let Orbis handle your social strategy.
+        .col-sm-8.col-md-5.col-sm-offset-2.col-md-offset-1.col-padding-xs
+          figure.img-overlay.img-left-front
+            .img-left
+              = image_tag 'feature-2-left.png', class: 'animation',
+                          alt: 'Image Left', 'data-animation': 'animation-fade-in-right'
+            .img-center
+              = image_tag 'feature-2-center.png', class: 'animation',
+                          alt: 'Image Center', 'data-animation': 'animation-fade-in-right'
+            .img-right
+              = image_tag 'feature-2-right.png', class: 'animation',
+                          alt: 'Image Right', 'data-animation': 'animation-fade-in-right'
+  #features3.wrap-container8040-rs
+    .container
+      .row
+        .col-sm-8.col-md-5.col-sm-offset-2.col-md-offset-0.col-padding-xs
+          figure.margin-bottom40.animation[data-animation="animation-fade-in-right"]
+            = image_tag 'feature-3.png', alt: 'Image'
+        .col-sm-10.col-md-6.col-md-offset-1.col-sm-offset-1
+          .col-text120.textcenter-xs.padding-top40-sm.margin-bottom40.animation[data-animation="animation-fade-in-left"]
+            .post-heading-left.post-heading-center-xs.border-style2.margin-bottom40
+              h2
+                strong
+                  | Why social?
+              p
+                | 78% of consumers validate their purchases online. A proper strategy puts you at an advantage. 
+            h4
+              | Say more than “Buy my stuff!”
+            p.margin-bottom5
+              | Prove you’re more than a sales pitch. Offer your clients information on their day-to-day and set yourself apart.
+            h4.margin-top30
+              | Offer more than your products.
+            p.margin-bottom5
+              | Prop yourself up as a center of advice and you’re at a unique advantage. The more value you are to your clients, the more likely they are to buy.
+  .sep-border
+  #features5.bg-color.wrap-container80-rs
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          | Why Orbis?
+        p
+          | Orbis is a cutting edge social engine designed with the financial profession in mind. Everything we do is designed to make your life as easy as possible.
+      .row
+        .col-sm-4
+          .affa-feature-text.animation[data-animation="animation-fade-in-up"]
+            h4
+              | Set It and Go
+            .feature-icon
+              = image_tag 'set-it-and-go.png', alt: 'Image'
+              span.feature-icon-shadow
+            p
+              | Unlike other services, Orbis is truely a “set it and go.” You don’t have time to maintain another service, and you shouldn’t have to.
+        .col-sm-4
+          .affa-feature-text.animation[data-animation="animation-fade-in-up" data-delay="200"]
+            h4
+              | Fortune 500 Strategy
+            .feature-icon
+              = image_tag 'fortune-500-strategy.png', alt: 'Image'
+              span.feature-icon-shadow
+            p
+              | Orbis uses the same social strategy employed by firms like Google and Pepsi. We know the whats and whys of strategy.
+        .col-sm-4
+          .affa-feature-text.animation[data-animation="animation-fade-in-up" data-delay="400"]
+            h4
+              | Built by Financial Pros
+            .feature-icon
+              = image_tag 'built-by-financial-pros.png', alt: 'Image'
+              span.feature-icon-shadow
+            p
+              | We know the ins and outs of compliance the awkwardness of sharing too much information. We know how to build a strong reputation.
+      .sep-border.margin-bottom40
+      .row
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up"]
+            i.ion.ion-ios-loop
+            p
+              | Fresh & Relevant Content
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up" data-delay="200"]
+            i.ion.ion-ios-email-outline
+            p
+              | Highly Curated
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up" data-delay="400"]
+            i.ion.ion-ios-monitor-outline
+            p
+              | Omnichannel
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up" data-delay="600"]
+            i.ion.ion-ios-heart-outline
+            p
+              | Responsive
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up" data-delay="800"]
+            i.ion.ion-ios-people-outline
+            p
+              | Multiple Accounts
+        .col-sm-2
+          .affa-feature-icon.animation[data-animation="animation-fade-in-up" data-delay="1000"]
+            i.ion.ion-ios-redo-outline
+            p
+              | Shareable
+      p.sub-heading.textcenter.margin-top20.no-margin-bottom.animation[data-animation="animation-fade-in-down"]
+        | The social marketing solution you’ve been waiting for.
+  #howto.wrap-container80-rs
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          | How it 
+          strong
+            | works.
+        p
+          | Orbis takes the time to get to know
+          strong  you.
+          br
+          | It finds the content most likely to strike a chord with your audience and knows the nuances that distinguish Facebook from LinkedIn.
+      figure.animation[data-animation="animation-bounce-in"]
+        = image_tag 'how-it-work.png', alt: 'Image'
+  #screenshots.bg-grey.grey-color2.no-border-bottom.wrap-container80-rs
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          strong
+            | Orbis
+          |  in Action
+        p
+          | Show your clients what you know.
+    .carousel-slider.gallery-slider.animation[data-animation="animation-fade-in-up"]
+      - for data in [1,2] do
+        - for i in 1..6 do
+          div
+            a.fancybox[href="#{asset_url('screenshots/' + i.to_s + '.png')}" data-fancybox-group="images_gallery"]
+              figure.img-hover
+                = image_tag 'screenshots/' + i.to_s + '.png'
+                .img-hover-masked
+  #pricing.bg-grey.grey-color2.no-border-top.wrap-container8040-rs
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          | No-Brainer Pricing
+      .tbl-pricing
+        .row
+          .col-sm-6.col-md-6.col-md-offset-3.col-sm-offset-3.tbl-prc-col.tbl-prc-col-recommended
+            .tbl-prc-base.animation[data-animation="animation-fade-in-right"]
+              h4.tbl-prc-heading.text-center
+                | Orbis Engine
+              h2.tbl-prc-price.text-center
+                sup
+                  | $
+                | 12.99 
+                span
+                  | /month
+              ul.tbl-prc-list
+                li
+                  i.ion.ion-android-done
+                  |  Three Connected Accounts
+                li
+                  i.ion.ion-android-done
+                  |  Fully Integrated User Dashboard
+                li
+                  i.ion.ion-android-done
+                  |  Automated Posting
+                li
+                  i.ion.ion-android-done
+                  |  Fortune 500 Strategy
+                li
+                  i.ion.ion-android-done
+                  |  High Quality, Highly Curated
+                li
+                  i.ion.ion-android-done
+                  |  Specifically Curated For You
+              .tbl-prc-footer
+                a.btn-custom[href="#"]
+                  | Get Orbis
+  #testimonials.padding-top80-rs.margin-bottom60-rs
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          | What 
+          strong
+            | People
+          |  Are Saying
+      .carousel-slider.affa-testimonials-carousel.animation[data-animation="animation-fade-in-up"]
+        .testimonial-item
+          = image_tag 'testimonial-1.png', alt: 'Avatar'
+          .testimonial-text
+            p
+              | Orbis gives the financial professional everything we offer our Fortune 50 clients. The brands we represent pay millions of dollars in advertising each year for some of the same services Orbis delivers to its users. This is a no-brainer.
+          .testimonial-author
+            h4
+              | Jennifer L.
+            p
+              | Brand Consultant 
+              span
+                | (Fortune 500 Consulting Firm)
+        .testimonial-item
+          = image_tag 'testimonial-2.jpg', alt: 'Avatar'
+          .testimonial-text
+            p
+              | Morbi feugiat mi metus, id tempus dolor bibendum ac. Morbi at viverra lacus. Quisque dolor eros, mollis nec auctor vel, consequat a nunc. Phasellus dictum a felis sed tempor. Nullam nec nisi suscipit, convallis tellus at, consequat ligula. Vivamus ac nunc sem. Curabitur venenatis risus neque, sed accumsan turpis tristique vitae.
+          .testimonial-rate
+            span.testimonial-rate-val[style="width:80%;"]
+          .testimonial-author
+            h4
+              | Rendy Jagerjack
+            p
+              | Lead Developer 
+              span
+                | (Dotstheme)
+        .testimonial-item
+          = image_tag 'testimonial-3.jpg', alt: 'Avatar'
+          .testimonial-text
+            p
+              | Curabitur egestas at mauris in tristique. Integer consequat congue tellus, sit amet maximus lorem mattis id. Cras non nunc mauris. Morbi sit amet sapien et ante rhoncus viverra. Suspendisse facilisis aliquam dui, a finibus ligula cursus vel. Donec at ligula ac metus rutrum gravida eu at elit. Nunc lobortis id justo quis sollicitudin diam porttitor pharetra.
+          .testimonial-rate
+            span.testimonial-rate-val[style="width:100%;"]
+          .testimonial-author
+            h4
+              | Yanuardi Donata
+            p
+              | Founder 
+              span
+                | (SneakersArea)
+  #contact.wrap-container80-rs.bg-grey
+    .container
+      .post-heading-center.animation[data-animation="animation-fade-in-down"]
+        h2
+          | Get 
+          strong
+            | Orbis
+      form.affa-form-contact.animation[method="post" action="#" data-animation="animation-fade-in-up"]
+        .submit-status
+        input[type="text" name="name" maxlength="255" placeholder="Your Name"]
+        input[type="text" name="email" maxlength="100" placeholder="Your Email *"]
+        input[type="submit" value="Get Started"]
+  = render 'layouts/footer'

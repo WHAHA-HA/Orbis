@@ -1,0 +1,27 @@
+.ibox.float-e-margins
+  .ibox-title
+    %h5 Manage Users
+    = link_to new_admin_company_user_path(@company), :class => 'btn btn-xs btn-primary pull-right' do
+      %i.fa.fa-plus
+      Add User
+  .ibox-content
+    %table.table
+      %thead
+        %tr
+          %th Full Name
+          %th Email
+          %th Added Date
+          %th Action
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.full_name
+            %td= user.email
+            %td= user.created_at.to_date
+            %td
+              = link_to edit_admin_company_user_path(@company, user), :class => 'btn btn-xs btn-warning' do
+                %i.fa.fa-edit
+                Edit
+              = link_to '#', :class => 'btn btn-xs btn-danger' do
+                %i.fa.fa-trash-o
+                Delete
